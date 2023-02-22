@@ -7,6 +7,8 @@ EXPOSE 80
 FROM mcr.microsoft.com/dotnet/sdk:7.0 AS build
 WORKDIR /src
 COPY ["NuGet.config", "."]
+COPY ["Directory.Build.props", "."]
+COPY ["Directory.Packages.props", "."]
 COPY ["example/DataSourceExample/DataSourceExample.csproj", "example/DataSourceExample/"]
 COPY ["src/EFCore.PG/EFCore.PG.csproj", "src/EFCore.PG/"]
 RUN dotnet restore "example/DataSourceExample/DataSourceExample.csproj"
