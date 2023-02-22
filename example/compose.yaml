@@ -1,0 +1,17 @@
+services:
+  app:
+    build:
+      context: ..
+      dockerfile: example/DataSourceExample/Dockerfile
+    ports:
+      - 8080:80
+    environment:
+      ConnectionStrings__Default: Host=db;Port=5432;Database=example;Username=example;Password=p4ssw0rd;SSL Mode=Disable
+  db:
+    image: postgres:15.2-alpine
+    ports:
+      - 5432:5432
+    environment:
+      POSTGRES_DB: example
+      POSTGRES_USER: example
+      POSTGRES_PASSWORD: p4ssw0rd
